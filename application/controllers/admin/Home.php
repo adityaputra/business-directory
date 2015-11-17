@@ -24,6 +24,10 @@ class Home extends CI_Controller {
 		// print_r($this->session->userdata('logged_in')); exit;
 		// if logged in
 		if($this->session->userdata('logged_in')){
+      
+
+      // exit;
+
 			$header = array('title' => $this->lang->line('title_admin_home'));
 			$this->load->view('admin/general/header', $header);
 			$this->load->view('admin/general/sidebar');
@@ -44,17 +48,18 @@ class Home extends CI_Controller {
 
   function login(){
 		$param = $_POST;
-    print_r($param); exit;
-		$param['password'] = md5($param['password']);
+    $param['password'] = md5($param['password']);
 
-		$this->load->model('M_account');
+		$this->load->model('admin/M_account');
 		$account = $this->M_account->login($param);
 		// print_r($account); exit;
 
 		if(!empty($account)){
 			$login = array(
-                         'username'  => $param['username'],
-												 'name' => $account[0]['name'],
+                         'email'  => $param['email'],
+												 'first_name' => $account[0]['first_name'],
+                         'last_name' => $account[0]['last_name'],
+                         'role' => $account[0]['role'],
                          'notification' => 'welcome',
                          'logged_in' => TRUE
                      );

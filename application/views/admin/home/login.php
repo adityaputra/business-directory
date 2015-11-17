@@ -31,21 +31,21 @@
                 <label for="inputEmail" class="col-sm-2 control-label">Email</label>
 
                 <div class="col-sm-10">
-                  <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="in-email">
+                  <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email">
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputPassword" class="col-sm-2 control-label">Password</label>
 
                 <div class="col-sm-10">
-                  <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="in-password">
+                  <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" name="in-remember"> Remember me
+                      <input type="checkbox" name="remember"> Remember me
                     </label>
                   </div>
                 </div>
