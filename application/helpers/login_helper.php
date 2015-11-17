@@ -7,4 +7,9 @@ function is_logged_in() {
     $user = $CI->session->userdata('logged_in');
     if (!isset($user)) { return false; } else { return true; }
 }
+function is_admin(){
+  $CI =& get_instance();
+  $role = $CI->session->userdata('role');
+  if ($role == 0) { return true; } else { return false; }
+}
 ?>
