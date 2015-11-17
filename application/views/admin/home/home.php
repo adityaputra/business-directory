@@ -4,11 +4,11 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Page Header
-      <small>Optional description</small>
+      <?php echo $this->lang->line('title_admin_home');?>
+      <small><?php echo $this->lang->line('desc_admin_home');?></small>
     </h1>
     <?php
-      $this->load->helper('brd');
+      // $this->load->helper('brd');
       echo(create_breadcrumb());
     ?>
     <!-- <ol class="breadcrumb">

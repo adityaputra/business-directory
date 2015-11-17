@@ -24,11 +24,11 @@ class Home extends CI_Controller {
 		// print_r($this->session->userdata('logged_in')); exit;
 		// if logged in
 		if($this->session->userdata('logged_in')){
-      
+
 
       // exit;
 
-			$header = array('title' => $this->lang->line('title_admin_home'));
+			$header = array('title' => $this->lang->line('title_admin_home')." - ".$this->lang->line('website_name'));
 			$this->load->view('admin/general/header', $header);
 			$this->load->view('admin/general/sidebar');
 			$this->load->view('admin/home/home');
@@ -38,7 +38,7 @@ class Home extends CI_Controller {
 
 		// else
 		else{
-			$header = array('title' => $this->lang->line('title_admin_login'));
+			$header = array('title' => $this->lang->line('title_admin_login')." - ".$this->lang->line('website_name'));
 			$this->load->view('admin/general/header', $header);
       $this->load->view('admin/general/sidebar');
 			$this->load->view('admin/home/login');
