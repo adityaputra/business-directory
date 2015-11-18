@@ -55,10 +55,10 @@
                       <span class="sr-only">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Detail</a></li>
-                      <li><a href="#">Edit</a></li>
+                      <li><a href="<?php echo base_url();?>user/detail/<?php echo urlencode(base64_encode($value['email']));?>">Detail</a></li>
+                      <li><a href="<?php echo base_url();?>user/edit/<?php echo urlencode(base64_encode($value['email']));?>">Edit</a></li>
                       <li class="divider"></li>
-                      <li><a href="#">Remove</a></li>
+                      <li><a href="<?php echo base_url();?>user/delete/<?php echo urlencode(base64_encode($value['email']));?>">Remove</a></li>
                     </ul>
                   </div>
                 </td>
