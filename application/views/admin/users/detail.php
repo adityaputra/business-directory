@@ -26,10 +26,10 @@
             <div class="row">
               <div class="col-md-3">
                 <!-- <div class="box box-profile"> -->
-                  <img src="<?php echo base_url().AVATAR_DIR.$detail['avatar_loc'];?>" class="profile-user-img img-responsive"/>
+                  <img src="<?php echo base_url().AVATAR_DIR.$detail['avatar_loc'];?>" class="img-responsive"/>
                 <!-- </div> -->
               </div>
-              <div class="col-md-3">
+              <div class="col-md-9">
                 <div class="table-responsive">
                   <table class="table table-condensed">
                     <tbody>
@@ -117,9 +117,9 @@
           <div class="box-footer">
             <div class="col-md-6"></div>
             <div class="col-md-6">
-              <a href="<?php echo base_url();?>admin/user/edit/<?php echo urlencode(base64_encode($detail['email']));?>"><button type="submit" class="btn btn-danger pull-right">Remove</button></a>
+              <a href="<?php echo base_url();?>admin/user/delete/<?php echo urlencode(base64_encode($detail['email']));?>"><button type="submit" class="btn btn-danger pull-right">Remove</button></a>
                 <span class="pull-right">&nbsp;</span>
-              <a href="<?php echo base_url();?>admin/user/delete/<?php echo urlencode(base64_encode($detail['email']));?>"><button type="submit" class="btn btn-warning pull-right">Edit</button></a>
+              <a href="<?php echo base_url();?>admin/user/edit/<?php echo urlencode(base64_encode($detail['email']));?>"><button type="submit" class="btn btn-warning pull-right">Edit</button></a>
             </div>
 
           </div>
