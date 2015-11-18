@@ -22,6 +22,14 @@
       </div>
       <!-- /.box-header -->
       <div class="box-body">
+        <!-- <div class="row">
+          <div class="col-md-12"> -->
+            <a href="<?php echo base_url();?>admin/user/add/">
+              <button class="btn btn-sm bg-olive"><i class="fa fa-plus"></i> Add new</button>
+            </a>
+            <br/><br/>
+          <!-- </div>
+        </div> -->
         <table id="table-users" class="table table-bordered table-striped">
           <thead>
           <tr>
