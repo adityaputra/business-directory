@@ -78,6 +78,10 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label for="about">About</label>
+                  <input type="text" class="form-control" id="about" name="about" placeholder="About yourself (max 140 chars.)" value="<?php echo set_value('about'); ?>">
+                </div>
+                <div class="form-group">
                   <label for="avatar">Avatar</label>
                   <input type="file" id="avatar" name="avatar">
                 </div>
