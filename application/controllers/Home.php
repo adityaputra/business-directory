@@ -19,8 +19,11 @@ class Home extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index()
-	{echo "home"; exit;
-		$this->load->view('welcome_message');
+	{
+		// echo "home"; exit;
+		$data['content'] = 'welcome_message';
+        $this->load->view('front/template',$data);
+		// $this->load->view('welcome_message');
 	}
   public function login(){
     echo "login"; exit;
