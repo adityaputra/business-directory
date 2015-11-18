@@ -281,7 +281,7 @@ switch (ENVIRONMENT)
 	}
 
 	define('VIEWPATH', $view_folder);
-
+define ('SITE_ROOT', realpath(dirname(__FILE__)));
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE

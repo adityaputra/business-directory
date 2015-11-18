@@ -13,5 +13,18 @@ class M_user extends CI_Model {
     // $exec = $this->db->query($query);
     return $exec->result_array();
   }
+
+  function check_registered_email($param){
+    $exec = $this->db->get_where('user', array('email' => $param['email']));
+    return $exec->result_array();
+  }
+
+  function write_account($param){
+    $exec = $this->db->insert('user', $param);
+    // print_r($exec); exit;
+
+    return $exec;
+
+  }
 }
 ?>

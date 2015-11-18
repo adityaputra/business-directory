@@ -11,15 +11,11 @@
       // $this->load->helper('brd');
       echo(create_breadcrumb());
     ?>
-    <!-- <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-      <li class="active">Here</li>
-    </ol> -->
   </section>
 
   <!-- Main content -->
   <section class="content">
-
+    <?php $this->load->view('admin/general/notifs') ?>
     <div class="box">
       <div class="box-header">
         <h3 class="box-title">User List</h3>
