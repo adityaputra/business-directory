@@ -58,7 +58,7 @@
                       <li><a href="<?php echo base_url();?>admin/user/detail/<?php echo urlencode(base64_encode($value['email']));?>">Detail</a></li>
                       <li><a href="<?php echo base_url();?>admin/user/edit/<?php echo urlencode(base64_encode($value['email']));?>">Edit</a></li>
                       <li class="divider"></li>
-                      <li><a href="<?php echo base_url();?>admin/user/delete/<?php echo urlencode(base64_encode($value['email']));?>">Remove</a></li>
+                      <li><a href="#" onclick="confirm_delete('<?php echo base_url();?>admin/user/delete/<?php echo urlencode(base64_encode($value['email']));?>')">Remove</a></li>
                     </ul>
                   </div>
                 </td>
@@ -80,7 +80,33 @@
       <!-- /.box-body -->
     </div>
     <!-- /.box -->
-
+    <script>
+    function confirm_delete(p){
+      $('#a-modal-confirmation-url').attr('href', p);
+      $('#modal-confirmation').modal('show');
+    }
+    </script>
+    <div class="modal modal-danger" id="modal-confirmation">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Confirmation</h4>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure to delete this user?</p>
+          </div>
+          <div class="modal-footer">
+            <a id="a-modal-confirmation-url" href="#"><button type="button" class="btn btn-outline">Delete</button></a>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
   </section>
   <!-- /.content -->
 </div>

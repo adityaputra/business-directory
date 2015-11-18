@@ -114,10 +114,11 @@
             <!-- /row -->
           </div>
           <!-- /.box-body -->
+
           <div class="box-footer">
             <div class="col-md-6"></div>
             <div class="col-md-6">
-              <a href="<?php echo base_url();?>admin/user/delete/<?php echo urlencode(base64_encode($detail['email']));?>"><button type="submit" class="btn btn-danger pull-right">Remove</button></a>
+              <a href="#" onclick="$('#modal-confirmation').modal('show');"><button type="submit" class="btn btn-danger pull-right">Remove</button></a>
                 <span class="pull-right">&nbsp;</span>
               <a href="<?php echo base_url();?>admin/user/edit/<?php echo urlencode(base64_encode($detail['email']));?>"><button type="submit" class="btn btn-warning pull-right">Edit</button></a>
             </div>
@@ -127,6 +128,28 @@
       </div>
       <!-- /.box -->
 
+
+      <div class="modal modal-danger" id="modal-confirmation">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure to delete this user?</p>
+            </div>
+            <div class="modal-footer">
+              <a href="<?php echo base_url();?>admin/user/delete/<?php echo urlencode(base64_encode($detail['email']));?>"><button type="button" class="btn btn-outline">Delete</button></a>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
   </section>
   <!-- /.content -->
 </div>

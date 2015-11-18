@@ -186,6 +186,26 @@ class User extends CI_Controller {
     $this->load->view('admin/users/script');
   }
 
+  function delete($param=null){
+    $this->load->model('admin/M_user');
+    $email = base64_decode(urldecode($param));
+    $param = array('email' => $email);
+    $delete = $this->M_user->delete($param);
+    // pour($delete); exit;
+
+    if($delete == 1){
+      $data['success'] = array();
+      array_push($data['success'], 'User '.$param['email'].' has been removed.');
+      $this->all($data);
+    }
+    else {
+      $data['error'] = array();
+      array_push($data['error'], 'Unable to remove user '.$param['email'].".");
+      $this->all($data);
+
+    }
+  }
+
   function do_edit($param, $file){
     // pour($param); pour($_FILES);exit;
     // Submitted form actions do register

@@ -30,5 +30,10 @@ class M_user extends CI_Model {
     // print_r($exec); exit;
     return $exec;
   }
+
+  function delete($param){
+     $exec = $this->db->delete('user', array('email' => $param['email']));
+     return $exec;
+  }
 }
 ?>
