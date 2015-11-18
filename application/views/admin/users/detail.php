@@ -117,8 +117,9 @@
           <div class="box-footer">
             <div class="col-md-6"></div>
             <div class="col-md-6">
-              <button type="submit" class="btn btn-danger pull-right">Remove</button><span class="pull-right">&nbsp;</span>
-              <button type="submit" class="btn btn-warning pull-right">Edit</button><span class="pull-right">
+              <a href="<?php echo base_url();?>admin/user/edit/<?php echo urlencode(base64_encode($detail['email']));?>"><button type="submit" class="btn btn-danger pull-right">Remove</button></a>
+                <span class="pull-right">&nbsp;</span>
+              <a href="<?php echo base_url();?>admin/user/delete/<?php echo urlencode(base64_encode($detail['email']));?>"><button type="submit" class="btn btn-warning pull-right">Edit</button></a>
             </div>
 
           </div>
