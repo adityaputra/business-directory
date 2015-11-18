@@ -282,6 +282,8 @@ switch (ENVIRONMENT)
 
 	define('VIEWPATH', $view_folder);
 define ('SITE_ROOT', realpath(dirname(__FILE__)));
+define('AVATAR_DIR', 'uploads/avatar/');
+define('AVATAR_ROOT', SITE_ROOT."/".AVATAR_DIR);
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE

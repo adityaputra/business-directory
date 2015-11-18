@@ -99,6 +99,22 @@ class User extends CI_Controller {
     }
   }
 
+  function detail($param){
+    $email = base64_decode(urldecode($param));
+    $data = array();
+    $this->load->model('admin/M_user');
+    $data['detail'] = $this->M_user->get(array('email' => $email))[0];
+    // print_r($data); exit;
+    //render
+    $header = array('title' => $this->lang->line('title_admin_users')." - ".$this->lang->line('website_name'));
+    $this->load->view('admin/general/header', $header);
+    $this->load->view('admin/general/sidebar');
+    $this->load->view('admin/users/detail', $data);
+    $this->load->view('admin/general/footer');
+    $this->load->view('admin/general/script');
+    $this->load->view('admin/users/script');
+  }
+
   function do_register($param, $file){
     // pour($param); pour($_FILES);exit;
     // Submitted form actions do register
@@ -142,6 +158,7 @@ class User extends CI_Controller {
   function do_upload($file, $param){
     // print_r($file); exit;
     $target_dir = SITE_ROOT."/uploads/avatar/";
+    $target_dir = AVATAR_ROOT;
 
     $name = $file["avatar"]["name"];
     $ext = end((explode(".", $name))); # extra () to prevent notice
