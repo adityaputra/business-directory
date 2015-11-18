@@ -99,6 +99,77 @@ class User extends CI_Controller {
     }
   }
 
+  function edit($param=null){
+    if($_POST){
+      $this->form_validation->set_rules('first_name', 'First name', 'required');
+      $this->form_validation->set_rules('last_name', 'Last name', 'required');
+      $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+  		// $this->form_validation->set_rules('password', 'Password', 'required');
+  		$this->form_validation->set_rules('role', 'Role', 'required');
+
+      $param = $_POST;
+      // print_r($_POST); exit;
+      if ($this->form_validation->run() == FALSE)
+  		{
+  			$header = array('title' => $this->lang->line('title_admin_users')." - ".$this->lang->line('website_name'));
+        $this->load->view('admin/general/header', $header);
+        $this->load->view('admin/general/sidebar');
+        $this->load->view('admin/users/edit');
+        $this->load->view('admin/general/footer');
+        $this->load->view('admin/general/script');
+        $this->load->view('admin/users/script');
+  		}
+  		else
+  		{
+        // pour($param);exit;
+  			// echo "lengkap";
+
+        $data = array();
+
+        // db insert
+
+        $add = $this->do_edit($param, $_FILES);
+        // pour($add); exit;
+        // $add = FALSE;
+
+        if($add['status'] == 1){
+          $data['success'] = array();
+          array_push($data['success'], 'User '.$param['email'].' has been saved.');
+          $this->all($data);
+        }
+        else {
+          $data['error'] = array();
+          array_push($data['error'], $add['message']);
+
+          $header = array('title' => $this->lang->line('title_admin_users')." - ".$this->lang->line('website_name'));
+          $this->load->view('admin/general/header', $header);
+          $this->load->view('admin/general/sidebar');
+          $this->load->view('admin/users/edit', $data);
+          $this->load->view('admin/general/footer');
+          $this->load->view('admin/general/script');
+          $this->load->view('admin/users/script');
+
+        }
+
+  		}
+    }
+    else{
+      $email = base64_decode(urldecode($param));
+      $data = array();
+      $this->load->model('admin/M_user');
+      $data['detail'] = $this->M_user->get(array('email' => $email))[0];
+
+      $header = array('title' => $this->lang->line('title_admin_users')." - ".$this->lang->line('website_name'));
+      $this->load->view('admin/general/header', $header);
+      $this->load->view('admin/general/sidebar');
+      $this->load->view('admin/users/edit', $data);
+      $this->load->view('admin/general/footer');
+      $this->load->view('admin/general/script');
+      $this->load->view('admin/users/script');
+    }
+
+  }
+
   function detail($param){
     $email = base64_decode(urldecode($param));
     $data = array();
@@ -113,6 +184,50 @@ class User extends CI_Controller {
     $this->load->view('admin/general/footer');
     $this->load->view('admin/general/script');
     $this->load->view('admin/users/script');
+  }
+
+  function do_edit($param, $file){
+    // pour($param); pour($_FILES);exit;
+    // Submitted form actions do register
+    $this->load->model('admin/M_user');
+
+    // encrypt password
+
+    if(!empty($param['password'])) $param['password'] = md5($param['password']);
+    else{
+      unset($param['password']);
+    }
+    // pour($param); pour($_FILES);exit;
+
+    // check account exist
+    $count_account = $this->M_user->check_registered_email($param);
+    if(sizeof($count_account) == 0){
+      return array('status' => 0, 'message' => 'Email '.$param['email'].' has not been registered, no script kiddies, please.');
+    }
+
+    if(!empty($file['avatar']['name'])){
+      $file_upload = $this->do_upload($file, $param);
+
+      if($file_upload['status'] == 0){
+        return array('status' => 0, 'message' => 'Error uploading avatar. Please check the submitted file.');
+      }
+
+      $param['avatar_loc'] = $file_upload['message'];
+    }
+
+    // write to db
+    $update_account = $this->M_user->update_account($param);
+
+    if($update_account == 1){
+      // echo $write_account; exit;
+      return array('status' => 1, 'message' => 'User edit success');
+    }
+    else{
+      // echo $write_account."FAILED TO REGISTER"; exit;
+      return array('status' => 0, 'message' => 'User edit failed');
+    }
+
+
   }
 
   function do_register($param, $file){

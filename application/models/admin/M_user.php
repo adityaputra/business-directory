@@ -20,9 +20,15 @@ class M_user extends CI_Model {
   function write_account($param){
     $exec = $this->db->insert('user', $param);
     // print_r($exec); exit;
-
     return $exec;
+  }
 
+  function update_account($param){
+    // pour($param); exit;
+    $exec = $this->db->where('email', $param['email']);
+    $exec = $this->db->update('user', $param);
+    // print_r($exec); exit;
+    return $exec;
   }
 }
 ?>
