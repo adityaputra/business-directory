@@ -66,9 +66,10 @@ desired effect
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Business</b>Directory</span>
     </a>
-
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
+    <?php //pour($this->session->userdata('logged_in')); exit;
+    if (($this->session->userdata('logged_in') == TRUE)): echo "hai";?>
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
@@ -222,5 +223,6 @@ desired effect
           </li>
         </ul>
       </div>
+    <?php endif;?>
     </nav>
   </header>
