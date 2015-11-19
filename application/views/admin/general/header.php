@@ -68,8 +68,8 @@ desired effect
     </a>
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
-    <?php //pour($this->session->userdata('logged_in')); exit;
-    if (($this->session->userdata('logged_in') == TRUE)): echo "hai";?>
+    <?php
+    if (($this->session->userdata('logged_in') == TRUE)): ?>
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
