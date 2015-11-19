@@ -9,7 +9,7 @@ function get_user_avatar_url($email){
   $CI = get_instance();
   $CI->load->model('admin/M_user');
   $user = $CI->M_user->get(array('email' => $email));
-  $user = $user[0];
+  if(!empty($user))$user = $user[0];
   // pour($CI->session);
   // pour($user); exit;
   if(empty($user['avatar_loc'])){
