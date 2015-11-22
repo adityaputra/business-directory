@@ -8,23 +8,23 @@ function create_breadcrumb(){
   $uri = $ci->uri->segment($i);
   $link = '<ol class="breadcrumb"><li><a href="'.base_url().'" target="_blank"><i class="fa fa-dashboard"></i> Home</a></li>';
 
-  while($uri != ''){
+  while($uri != '' && $i<=3){
     $prep_link = '';
-  for($j=1; $j<=$i;$j++){
-    $prep_link .= $ci->uri->segment($j).'/';
-  }
+    for($j=1; $j<=$i;$j++){
+      $prep_link .= $ci->uri->segment($j).'/';
+    }
 
-  if($ci->uri->segment($i+1) == ''){
-    $link.='<li class="active"><a href="#"><b>';
-    $link.=$ci->uri->segment($i).'</b></a></li> ';
-  }else{
-    $link.='<li> <a href="'.site_url($prep_link).'">';
-    $link.=$ci->uri->segment($i).'</a></li> ';
-  }
+    if($ci->uri->segment($i+1) == '' || $i==3){
+      $link.='<li class="active"><a href="#"><b>';
+      $link.=$ci->uri->segment($i).'</b></a></li> ';
+    }else{
+      $link.='<li> <a href="'.site_url($prep_link).'">';
+      $link.=$ci->uri->segment($i).'</a></li> ';
+    }
 
-  $i++;
-  $uri = $ci->uri->segment($i);
-  }
+    $i++;
+    $uri = $ci->uri->segment($i);
+    }
     $link .= '</ol>';
     return $link;
   }
