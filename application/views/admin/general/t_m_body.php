@@ -9,7 +9,7 @@
 
 <!-- Main content -->
 <section class="content">
-
+  <?php $this->load->view('admin/general/t_notifs') ?>
   <!-- Default box -->
   <div class="box">
     <div class="box-header with-border">
