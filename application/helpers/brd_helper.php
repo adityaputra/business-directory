@@ -6,7 +6,7 @@ function create_breadcrumb(){
   $ci = &get_instance();
   $i=1;
   $uri = $ci->uri->segment($i);
-  $link = '<ol class="breadcrumb">';
+  $link = '<ol class="breadcrumb"><li><a href="'.base_url().'" target="_blank"><i class="fa fa-dashboard"></i> Home</a></li>';
 
   while($uri != ''){
     $prep_link = '';
@@ -15,10 +15,10 @@ function create_breadcrumb(){
   }
 
   if($ci->uri->segment($i+1) == ''){
-    $link.='<li>»<a href="'.site_url($prep_link).'"><b>';
+    $link.='<li class="active"><a href="#"><b>';
     $link.=$ci->uri->segment($i).'</b></a></li> ';
   }else{
-    $link.='<li>» <a href="'.site_url($prep_link).'">';
+    $link.='<li> <a href="'.site_url($prep_link).'">';
     $link.=$ci->uri->segment($i).'</a></li> ';
   }
 
