@@ -55,8 +55,8 @@
         <li class="treeview">
           <a href="#"><i class="fa fa-folder"></i> <span>Category</span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
+            <li><a href="<?php echo base_url();?>admin/category/">All categories</a></li>
+            <li><a href="<?php echo base_url();?>admin/category/add/">Add new category</a></li>
           </ul>
         </li>
         <li class="treeview">
